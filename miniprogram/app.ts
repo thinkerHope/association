@@ -3,7 +3,7 @@ App<IAppOption>({
   globalData: {
     server_prefix: 'http://ktoking.com/',
     myserver_prefix: 'http://127.0.0.1:8111',
-    
+
     userInfo: null,
   },
   onLaunch() {
@@ -19,7 +19,7 @@ App<IAppOption>({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       },
     })
-    // 获取用户信息
+    // 获取用户信息qwe
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {

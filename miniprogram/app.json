@@ -1,14 +1,49 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/association/association",
+    "pages/activity/activity",
+    "pages/user/user",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#323232",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "NEUQ社团广场"
   },
-  "style": "v2",
+  "debug": true,
+  "tabBar": {
+    "color": "black",
+    "selectedColor": "#23374d",
+    "backgroundColor": "white",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "活动广场",
+        "iconPath": "assets/icons/shouye.png",
+        "selectedIconPath": "assets/icons/shouye1.png"
+      },
+      {
+        "pagePath": "pages/association/association",
+        "text": "社团广场",
+        "iconPath": "assets/icons/shetuan.png",
+        "selectedIconPath": "assets/icons/shetuan1.png"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "我的活动",
+        "iconPath": "assets/icons/huodong.png",
+        "selectedIconPath": "assets/icons/huodong1.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "iconPath": "assets/icons/wode.png",
+        "selectedIconPath": "assets/icons/wode1.png"
+      }
+    ]
+  },
   "sitemapLocation": "sitemap.json"
 }

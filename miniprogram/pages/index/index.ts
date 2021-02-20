@@ -1,54 +1,48 @@
-// index.ts
-// 获取应用实例
-const app = getApp<IAppOption>()
+// pages/main/main.js
+var app = getApp();
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    swiperList: [{
+      id: 0,
+      type: 'image',
+      url: '../../assets/images/swiper_01.jpeg'
+    }, {
+      id: 1,
+      type: 'image',
+      url: '../../assets/images/swiper_02.jpeg'
+    }, {
+      id: 2,
+      type: 'image',
+      url: '../../assets/images/swiper_03.jpeg'
+    }, {
+      id: 3,
+      type: 'image',
+      url: '../../assets/images/swiper_04.jpeg'
+    }, {
+      id: 4,
+      type: 'image',
+      url: '../../assets/images/swiper_05.jpeg'
+    }, {
+      id: 5,
+      type: 'image',
+      url: '../../assets/images/swiper_06.jpeg'
+    }],
+  
+    act_array:[
+      {
+        activityId: 1,
+        activityCover: '',
+        clubId: 1,
+        activityName: '敬老院活动',
+        userAvatar: '',
+        userName: 'noaher',
+        time: '2020-12-12',
+        hot: true,
+        activityPeople: 30,
+      } 
+    ], //list数据
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs',
-    })
-  },
-  onLoad() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true,
-          })
-        },
-      })
-    }
-  },
-  getUserInfo(e: any) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true,
-    })
-  },
-})
+
+  
+});

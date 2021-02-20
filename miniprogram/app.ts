@@ -1,9 +1,7 @@
 // app.ts
 App<IAppOption>({
   globalData: {
-    server_prefix: 'http://ktoking.com/',
-    myserver_prefix: 'http://127.0.0.1:8111',
-
+    server_prefix: 'http://localhost:3001',
     userInfo: null,
   },
   onLaunch() {

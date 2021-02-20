@@ -1,0 +1,65 @@
+<!--miniprogram/pages/search/search.wxml-->
+<view>
+  <van-search
+    model:value="{{ value }}"
+    show-action
+    placeholder="搜索活动名称"
+    bind:search="onSearch"
+    bind:cancel="onCancel"
+    bind:clear="onClear"
+    bind:change="onChange"
+  />
+  <view class='border'/>
+
+  <view wx:if="{{showHistoryList}}">
+    <view class="cu-bar bg-white">
+      <view class="action">
+        <text class="cuIcon-titles text-green"></text>
+        <text class="text-xl text-bold">搜索历史</text>
+      </view>
+      <view class="action" bindtap="deleteAll">
+        <icon class="cuIcon-delete" style="line-height: 2;font-size: 18px;"/>
+      </view>
+    </view>
+    <view class="cu-list menu sm-border">
+      <view class="cu-item" wx:for="{{historyList}}" wx:for-item="item" wx:key='index'>
+        <view class="content">
+          <text class="text-grey">{{item}}</text>
+        </view>
+        <view class="action" bindtap="deleteHistoryItem" data-index="{{index}}">
+          <icon class="cuIcon-close text-grey" style="line-height: 2;font-size: 16px"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!showHistoryList}}">
+    <view  wx:for="{{searchList}}"  wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex">
+      <view class="cu-card case no-card" bindtap="jumpAct" data-bindex='{{bindex}}' data-act-id="{{item.activityId}}" data-club-id="{{item.clubId}}">
+        <view class="cu-item shadow">
+          <view class="image">
+            <image src="{{item.activityCover}}" style="max-height: 190px;"></image>
+            <view class="cu-tag bg-black ">立即报名</view>
+            <view class="cu-bar bg-shadeBottom">
+              <text class="text-cut">{{item.activityName}}</text>
+            </view>
+          </view>
+          <view class="cu-list menu-avatar">
+            <view class="cu-item">
+              <view class="cu-avatar round lg" style="background-image:url({{item.userAvatar}});"></view>
+              <view class="content flex-sub">
+                <view class="text-grey">{{item.userName}}</view>
+                <view class="text-gray text-sm flex justify-between">
+                  {{item.time}}
+                  <view class="text-gray text-sm">
+                    <text class="cuIcon-hot margin-lr-xs"></text> {{item.hot}}
+                    <text class="cuIcon-peoplelist margin-lr-xs"></text> {{item.activityPeople}}人
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

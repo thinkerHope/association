@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "van-search": "/dist/search/index",
+    "van-toast": "/dist/toast/index",
+    "van-icon": "/dist/icon/index"
+  }
 }

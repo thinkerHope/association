@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-tree-select": "/dist/tree-select/index",
+    "van-toast": "/dist/toast/index"
+  }
+}

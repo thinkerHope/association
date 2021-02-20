@@ -1,0 +1,11 @@
+/* miniprogram/pages/association/association.wxss */
+.main-active-class{
+  color: #515151 !important;
+}
+.content-active-class{
+    color: #515151 !important;
+}
+
+.high{
+  height: 100%;
+}

@@ -1,0 +1,12 @@
+<!--miniprogram/pages/association/association.wxml-->
+<van-tree-select 
+  main-active-class="main-active-class" 
+  content-active-class="content-active-class"
+  items="{{ items }}"
+  main-active-index="{{ mainActiveIndex }}"
+  active-id="{{ activeId }}"
+  bind:click-nav="onClickNav"
+  bind:click-item="onClickItem"
+  height="100%"
+/>
+<van-toast id="van-toast" />

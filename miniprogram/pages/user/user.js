@@ -15,6 +15,10 @@ Page({
     
   },
 
+  onShow: function() {
+    
+  }
+
 
   // 一键登陆
   

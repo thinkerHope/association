@@ -1,7 +1,7 @@
 <!--pages/index/index.wxml-->
 <view id="container">
   <swiper 
-    class="screen-swiper {{DotStyle ? 'square-dot' : 'round-dot'}}" 
+    class="screen-swiper round-dot" 
     indicator-dots="true" 
     circular="true" 
     autoplay="true"
@@ -21,17 +21,6 @@
 
   <view class='border' />
 
-  <!-- <van-search 
-    value="{{ value }}" 
-    label="活动搜索" 
-    placeholder="请输入搜索活动名称" 
-    use-action-slot 
-    bind:change="onChange" 
-    bind:search="onSearch" 
-    shape="round" 
-    background="black"
-  > -->
-  <!-- </van-search> -->
   <view class="box">
     <view class="cu-bar bg-white">
       <view class="action">

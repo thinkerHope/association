@@ -1,2 +1,6 @@
 <!--miniprogram/pages/login/login.wxml-->
-
+<view class="login-bg" style="background-image:url('../../assets/images/bg_03.jpeg');">
+  <view class="bg-alpha">
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="wx-login-btn">微信登录</button>
+  </view>
+</view>

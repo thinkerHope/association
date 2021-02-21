@@ -1,4 +1,3 @@
-/// <reference types="miniprogram-api-typings" />
 declare type DialogAction = 'confirm' | 'cancel';
 declare type DialogOptions = {
     lang?: string;

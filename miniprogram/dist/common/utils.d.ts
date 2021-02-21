@@ -1,4 +1,3 @@
-/// <reference types="miniprogram-api-typings" />
 export declare function isDef(value: any): boolean;
 export declare function isObj(x: any): boolean;
 export declare function isNumber(value: any): boolean;

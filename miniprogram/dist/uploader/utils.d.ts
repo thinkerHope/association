@@ -1,4 +1,3 @@
-/// <reference types="miniprogram-api-typings" />
 interface File {
     path: string;
     url: string;

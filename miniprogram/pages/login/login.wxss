@@ -1,1 +1,23 @@
 /* miniprogram/pages/login/login.wxss */
+.login-bg {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bg-alpha {
+  padding-top: 60%;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.wx-login-btn {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 600rpx;
+  border-radius: 60rpx;
+  color: green;
+  box-shadow: var(--ShadowSize) var(--greenShadow);
+}

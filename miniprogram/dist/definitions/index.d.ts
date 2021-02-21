@@ -1,4 +1,3 @@
-/// <reference types="miniprogram-api-typings" />
 import { Weapp } from './weapp';
 declare type RecordToAny<T> = {
     [K in keyof T]: any;

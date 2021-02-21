@@ -1,4 +1,3 @@
-/// <reference types="miniprogram-api-typings" />
 export declare namespace Weapp {
     export interface FormField {
         data: {

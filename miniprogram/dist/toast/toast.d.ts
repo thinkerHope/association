@@ -1,4 +1,3 @@
-/// <reference types="miniprogram-api-typings" />
 declare type ToastMessage = string | number;
 interface ToastOptions {
     show?: boolean;

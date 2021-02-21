@@ -50,6 +50,15 @@ const checkSession = () => {
   })
 }
 
+const $checkLoginStatus = () => {
+	const skey = wx.getStorageSync('skey')
+	if (!skey) {
+		reject('未登录')
+	} else {
+		
+	}
+}
+
 const $requestAuth = (url, data, method = 'GET', config = {}) => {
   const skey = wx.getStorageSync('skey')
   if (!skey) {

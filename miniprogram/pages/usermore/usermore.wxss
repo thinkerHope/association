@@ -1,0 +1,31 @@
+/* miniprogram/pages/usermore/usermore.wxss */
+.cu-avatar .cu-tag-camera {
+  top: 111rpx;
+}
+
+.avatar-container {
+  height: 350rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cu-avatar.avatar-lg {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.van-cell-group .van-cell__value {
+  white-space: nowrap;
+  color: green;
+}
+
+.cu-avatar .cu-tag.badge {
+  font-size: 26rpx;
+}
+
+.cu-avatar .cu-tag {
+  width: 40rpx;
+  height: 40rpx;
+}

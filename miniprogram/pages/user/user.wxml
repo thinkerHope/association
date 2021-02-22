@@ -46,11 +46,11 @@
         <text class="text-grey">加入的社团</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/log/log" hover-class="none">
+    <view class="cu-item arrow" bindtap="jumpUserMore">
+      <view class="content">
         <text class="cuIcon-writefill text-blue"></text>
-        <text class="text-grey">信息完善</text>
-      </navigator>
+        <text class="text-grey">编辑资料</text>
+      </view>
     </view>
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/log/log" hover-class="none">

@@ -5,7 +5,9 @@
     "pages/activity/activity",
     "pages/user/user",
     "pages/search/search",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/usermore/usermore",
+    "pages/phoneBind/phoneBind"
   ],
   "window": {
     "backgroundTextStyle": "light",

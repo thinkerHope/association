@@ -4,3 +4,5 @@
     <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="wx-login-btn">微信登录</button>
   </view>
 </view>
+
+<van-toast id="van-toast" />

@@ -52,6 +52,7 @@ Page({
     }
     wx.showToast({
       icon: 'loading',
+      duration: 3000,
     });
     wx.request({
       url: app.globalData.server_prefix + '/search/activity',
@@ -76,7 +77,7 @@ Page({
           }
         }
         else {
-          Toast.fail(res.data.data.errorMsg);
+          Toast.fail('');
         }
       }, fail: (res) => {
         Toast.fail('刷新失败');

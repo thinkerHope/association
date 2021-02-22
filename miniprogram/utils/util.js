@@ -79,7 +79,7 @@ const $checkLoginStatus = () => {
 const $requestAuth = (url, data, method = 'GET', config = {}) => {
   const skey = wx.getStorageSync('skey')
   if (!skey) {
-    return Promise.reject({ retcode: -1, message: '未登录' })
+    return Promise.reject({ retcode: 3004, message: '未登录' })
   } else {
     return new Promise((resolve, reject) => {
       checkSession().then(res => {
@@ -97,7 +97,7 @@ const $requestAuth = (url, data, method = 'GET', config = {}) => {
           })
         } else {
           // $login()
-          reject({ retcode: -1, message: '登录失效, 重新登录' })
+          reject({ retcode: 3004, message: '登录失效, 重新登录' })
         }
       })
     })

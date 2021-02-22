@@ -7,7 +7,6 @@
     autoplay="true"
     interval="5000" 
     duration="500" 
-    bindchange="cardSwiper" 
     indicator-color="#8799a3" 
     indicator-active-color="#e1f4f3"
   >
@@ -27,8 +26,10 @@
         <text class="cuIcon-titles text-green"></text>
         <text class="text-xl text-bold">近期活动</text>
       </view>
-      <view class="action" bindtap="jumpSearch">
-        <icon type="search" size="22"/>
+      <view class="action">
+        <navigator url="/pages/search/search">
+          <icon type="search" size="22"/>
+        </navigator>
       </view>
     </view>
   </view>

@@ -9,13 +9,6 @@ Page({
     userInfo: null,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
-  },
-
   onShow: function() {
     // 判断登录态
     app.authApi.$check()
@@ -67,4 +60,24 @@ Page({
     })
   },
 
+  jumpUserMore() {
+    this.checkStatus()
+    wx.navigateTo({
+      url: '/pages/usermore/usermore',
+    })
+  },
+  checkStatus() {
+    if (this.condition) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      });
+      return;
+    }
+  },
+
+
+  onPullDownRefresh: function () {
+    // 校验一次登陆状态
+    
+  },
 })

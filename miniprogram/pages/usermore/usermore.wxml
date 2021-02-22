@@ -1,7 +1,7 @@
 <!--miniprogram/pages/usermore/usermore.wxml-->
 <scroll-view scroll-y class="scrollPage">
   <view class="avatar-container">
-    <van-uploader  bind:after-read="afterRead">
+    <van-uploader bind:after-read="afterRead">
       <view class="cu-avatar round avatar-lg"  style="background-image:url({{ avatar }});">
         <view class="cu-tag badge cuIcon-camera bg-black cu-tag-camera"></view>
       </view>

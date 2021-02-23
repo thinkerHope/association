@@ -1,23 +1,22 @@
 // miniprogram/pages/usermore/usermore.js
+import Dialog from '../../dist/dialog/dialog';
+import Toast from '../../dist/toast/toast';
+import regeneratorRuntime from '../../utils/runtime';
 const app = getApp()
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    starttime:'',
-    endtime:'',
-    
     columns: ['管理学院', '经济学院', '计算机与通信工程学院', '控制工程学院', '外国语文化学院','数学与统计学院','资源与材料学院'],
-    is_open_pop:false,
-    class:'',
+    is_open_pop: false,
+    userclass:'',
     username: '',
-    phone:'',
     sno:'',
     academy:'',
-    avatar: '',
+    avatarUrl: '',
+    avatarFile: ''
   },
-
 
   onConfirmPicker(event){
     console.log(event)
@@ -47,17 +46,12 @@ Page({
   // 绑定输入框
   input_user_name(e){
     this.setData({
-      username:e.detail
+      username: e.detail
     })
   },
   input_user_class(e) {
     this.setData({
-      class: e.detail
-    })
-  },
-  input_user_phone(e) {
-    this.setData({
-      phone: e.detail
+      userclass: e.detail
     })
   },
   input_user_student_number(e) {
@@ -65,13 +59,97 @@ Page({
       sno: e.detail
     })
   },
+
+  afterRead(event) {
+    const that = this;
+    const { file } = event.detail;
+    // file.path 是小程序的临时文件，只有在小程序中有用，在浏览器中是展示不了的
+    that.setData({
+      avatarUrl: file.path,
+      avatarFile: file
+    })
+  },
+
+  onsubmit(e) {
+    const that = this
+    const { userclass, username, sno, academy } = this.data;
+    if (
+      !userclass||
+      !username ||
+      !sno ||
+      !academy
+    ) {
+      Dialog.alert({
+        title: '完善信息失败',
+        message: '请完善信息后再尝试'
+      }).then(() => {
+        // on close
+      })
+    } else {
+      const userInfo_ = wx.getStorageSync('userInfo');
+      const newUser = {
+        userid: userInfo_.userid,
+        username,
+        userclass,
+        sno,
+        academy,
+       };
+      console.log('[newUser]: ', newUser)
+
+      app.authApi.$request(
+        app.globalData.server_prefix + '/api/user/update/basic',
+        newUser,
+        'POST',
+        { header: { 'content-type': 'application/json;charset=UTF-8' }, }
+      )
+      .then(async res => {
+        const { retcode } = res
+        console.log('$request updateUserInfo',res.data.data.userInfo)
+        if (retcode === 0) {
+          let uploadRes;
+          if (this.data.avatarFile) {
+            try {
+              uploadRes = await app.authApi.$upload(
+                app.globalData.server_prefix + '/api/upload/user_avatar',
+                this.data.avatarFile.path,
+                { userid: newUser.userid }
+              );
+              console.log('头像上传成功', uploadRes)
+            } catch(err) {
+              console.log('err', err)
+              console.log('头像上传失败')
+            }
+          }
+          // 更新信息到缓存
+          const oldUserInfo = wx.getStorageSync('userInfo')
+          const newUserInfo = { ...oldUserInfo, ...res.data.data.userInfo }
+          if (uploadRes) {
+            newUserInfo.avatarUrl = `${app.globalData.server_prefix}${uploadRes}`
+          }
+          wx.setStorageSync('userInfo', newUserInfo);
+          Dialog.alert({
+            message: '修改成功'
+          }).then(() => {
+            // on close
+          })
+        }
+        else {
+          Toast.fail('请求失败');
+        }
+      })
+      .catch(err => {
+        console.log('err', JSON.stringify(err))
+        Toast.fail('请求失败');
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     if (app.globalData.userInfo) {
       this.setData({
-        avatar: app.globalData.userInfo.avatarUrl 
+        avatarUrl: app.globalData.userInfo.avatarUrl,
       })
     }
   },

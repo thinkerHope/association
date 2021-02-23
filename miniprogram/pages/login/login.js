@@ -36,6 +36,10 @@ Page({
           wx.getUserInfo({
             success(res) {
               console.log("获取用户信息成功", res)
+              wx.setStorage({
+                data: res.userInfo,
+                key: 'userInfo',
+              })
               app.setUserInfo(res.userInfo)
               app.authApi.$login()
               .then(res => {

@@ -11,29 +11,14 @@ App({
 		const logs = wx.getStorageSync('logs') || [];
 		logs.unshift(Date.now());
 		wx.setStorageSync('logs', logs);
-		wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权
-          wx.getUserInfo({
-            success(res) {
-							console.log("获取用户信息成功", res)
-							that.globalData.userInfo = res.userInfo
-            },
-            fail(res) {
-              console.log("获取用户信息失败", res)
-            }
-          })
-        } else {
-          console.log("未授权=====")
-        }
-      }
-    })
+		const userInfo = wx.getStorageSync('userInfo')
+		this.globalData.userInfo = userInfo;
 	},
 	authApi: {
 		$login: util.$login,
-		$request: util.$requestAuth,
+		$request: util.$request,
 		$check: util.$checkLoginStatus,
+		$upload: util.$upload,
 	},
 	setUserInfo: function(data) {
 		this.globalData.userInfo = { ...data }

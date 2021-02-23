@@ -9,6 +9,12 @@ Page({
     userInfo: null,
   },
 
+  onLoad: function() {
+    console.log('app.globalData.userInfo',app.globalData.userInfo)
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
+  },
   onShow: function() {
     // 判断登录态
     app.authApi.$check()
@@ -16,7 +22,6 @@ Page({
       if (res.retcode === 0) {
         this.setData({
           condition: false,
-          userInfo: app.globalData.userInfo
         })
       } else {
         this.setData({

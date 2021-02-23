@@ -35,7 +35,6 @@ const $login = () => {
               res.data.data && 
               res.data.data.skey
             ) {
-              wx.setStorageSync('userInfo', res.data.data)
               resolve(res.data.data)
             }
           }

@@ -7,7 +7,7 @@
       style="background-image:url({{userInfo.avatarUrl}});margin-left:0;"
     />
     <view wx:if="{{!condition}}" style="margin-top: 25rpx;">
-      <view class="text-xl">{{userInfo.nickName}}</view>
+      <view class="text-xl">{{userInfo.username ? userInfo.username : userInfo.nickName}}</view>
       <view class="margin-top-sm">
         <view class="cu-tag bg-blue light">轮滑社</view>
         <view class="cu-tag bg-mauve light">骑行社</view>

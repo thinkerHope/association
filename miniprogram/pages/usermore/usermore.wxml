@@ -10,7 +10,7 @@
   <van-cell-group class="van-cell-group">
     <van-field model:value="{{ username }}" required clearable label="姓名" placeholder="请输入真实的姓名以便加入社团" bind:input="input_user_name"/>
     <van-field model:value="{{ userclass }}" label="班级" placeholder="例: 信管1701" required border="true" bind:input="input_user_class" />
-    <van-field model:value="{{ usersno }}" type="number" label="学号" placeholder="请输入学生学号" required border="true" bind:input="input_user_student_number"/>
+    <van-field model:value="{{ sno }}" type="number" label="学号" placeholder="请输入学生学号" required border="true" bind:input="input_user_student_number"/>
     <van-cell required title="选择学院" is-link bind:click="showPopup" >{{ academy }}</van-cell>
     <van-popup show="{{ is_open_pop }}" round position="bottom" bind:close="onClosePop">
       <van-picker columns="{{ columns }}" show-toolbar bind:change="onChangePicker" bind:confirm="onConfirmPicker" bind:cancel="onCanclePicker"  />

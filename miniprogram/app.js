@@ -6,13 +6,14 @@ App({
 		server_prefix: 'http://localhost:3001',
 		userInfo: null,
 	},
-	onLaunch: function () {
-		const that = this;
+	onLaunch: function() {
 		const logs = wx.getStorageSync('logs') || [];
 		logs.unshift(Date.now());
 		wx.setStorageSync('logs', logs);
-		const userInfo = wx.getStorageSync('userInfo')
-		this.globalData.userInfo = userInfo;
+		const userInfo = wx.getStorageSync('userInfo');
+		if (userInfo) {
+			this.globalData.userInfo = userInfo;
+		}
 	},
 	authApi: {
 		$login: util.$login,

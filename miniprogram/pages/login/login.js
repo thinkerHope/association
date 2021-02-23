@@ -22,7 +22,6 @@ Page({
     // 获取用户信息
     wx.getSetting({
       success(res) {
-        // console.log("res", res)
         if (res.authSetting['scope.userInfo']) {
           console.log("已授权=====")
           wx.showToast({ // 提示加载,提高用户体验
@@ -36,15 +35,31 @@ Page({
           wx.getUserInfo({
             success(res) {
               console.log("获取用户信息成功", res)
-              wx.setStorage({
-                data: res.userInfo,
-                key: 'userInfo',
-              })
-              app.setUserInfo(res.userInfo)
               app.authApi.$login()
-              .then(res => {
-                if (res) {
+              .then(loginRes => {
+                // 登录成功之后如果用户已经完善了信息则直接返回
+                const { exists, skey } = loginRes
+                if (loginRes) {
                   Toast.success('登录成功')
+                  if (exists) {
+                    wx.setStorageSync('userInfo', {
+                      ...exists,
+                      skey,
+                    })
+                    app.setUserInfo({
+                      ...exists,
+                      skey,
+                    })
+                  } else {
+                    wx.setStorageSync('userInfo', {
+                      ...res.userInfo,
+                      skey,
+                    })
+                    app.setUserInfo({
+                      ...res.userInfo,
+                      skey,
+                    })
+                  }
                   wx.navigateBack()
                 }
                 wx.hideToast();

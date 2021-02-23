@@ -12,7 +12,7 @@ Page({
     is_open_pop: false,
     userclass:'',
     username: '',
-    sno:'',
+    sno: '',
     academy:'',
     avatarUrl: '',
     avatarFile: ''
@@ -22,7 +22,7 @@ Page({
     console.log(event)
     this.setData({ 
       academy: event.detail.value,
-      is_open_pop:false
+      is_open_pop: false
     });
   },
   onCanclePicker(){
@@ -150,6 +150,10 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         avatarUrl: app.globalData.userInfo.avatarUrl,
+        userclass: app.globalData.userInfo.userclass,
+        username: app.globalData.userInfo.username,
+        sno: app.globalData.userInfo.sno,
+        academy: app.globalData.userInfo.academy,
       })
     }
   },

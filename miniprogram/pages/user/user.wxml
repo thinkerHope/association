@@ -53,7 +53,7 @@
       </view>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/log/log" hover-class="none">
+      <navigator class="content" url="/pages/association_register/association_register" hover-class="none">
         <text class="cuIcon-fork text-yellow"></text>
         <text class="text-grey">注册社团</text>
       </navigator>

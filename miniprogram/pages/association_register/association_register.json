@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "van-calendar": "../../dist/calendar/index",
+    "van-cell": "/dist/cell/index",
+    "van-cell-group": "/dist/cell-group/index",
+    "van-field": "/dist/field/index",
+    "van-picker": "/dist/picker/index",
+    "van-popup": "/dist/popup/index",
+    "van-uploader": "/dist/uploader/index",
+    "van-button": "/dist/button/index",
+    "van-dialog": "/dist/dialog/index",
+    "van-toast": "/dist/toast/index"
+  },
+  "navigationBarTitleText": "注册社团"
+}

@@ -61,10 +61,9 @@ Page({
   },
 
   afterRead(event) {
-    const that = this;
     const { file } = event.detail;
     // file.path 是小程序的临时文件，只有在小程序中有用，在浏览器中是展示不了的
-    that.setData({
+    this.setData({
       avatarUrl: file.path,
       avatarFile: file
     })
@@ -127,6 +126,7 @@ Page({
             newUserInfo.avatarUrl = `${app.globalData.server_prefix}${uploadRes}`
           }
           wx.setStorageSync('userInfo', newUserInfo);
+          app.setUserInfo(newUserInfo);
           Dialog.alert({
             message: '修改成功'
           }).then(() => {

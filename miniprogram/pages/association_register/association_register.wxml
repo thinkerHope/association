@@ -1,0 +1,28 @@
+<!--miniprogram/pages/association_register/association_register.wxml-->
+<scroll-view scroll-y class="scrollPage">
+  <view class="avatar-container">
+    <van-uploader bind:after-read="afterRead">
+      <view class="cu-avatar round avatar-lg"  style="background-image:url({{ avatarUrl }});">
+        <view class="cu-tag badge cuIcon-camera bg-black cu-tag-camera"></view>
+      </view>
+    </van-uploader>
+  </view>
+  <van-cell-group class="van-cell-group">
+    <van-field model:value="{{ association_name }}" required clearable label="社团名称" placeholder="请输入社团全称" bind:input="input_club_name"/>
+    <van-field model:value="{{ association_desc }}" label="社团描述" type="textarea" autosize="true" placeholder="请尽量详细描述" required border="true" bind:input="input_club_detail" />
+    <van-cell required title="选择社团类别" is-link bind:click="show_type_Popup">{{association_type}}</van-cell>
+    <van-popup show="{{ is_open_type_pop }}" round position="bottom" bind:close="onClose_type_Pop">
+      <van-picker columns="{{ type_columns }}" show-toolbar bind:change="onChangePicker" bind:confirm="onConfirmPicker_type" bind:cancel="onCanclePicker_type" />
+    </van-popup>
+
+    <van-cell required title="选择所属学院" is-link bind:click="showPopup">{{association_acedemy}}</van-cell>
+    <van-field value="{{ association_qq }}" type="number" label="社团qq群" placeholder="请输入qq群号" required border="true" bind:input="input_club_qqnum" />
+    <van-popup show="{{ is_open_pop }}" round position="bottom" bind:close="onClosePop">
+      <van-picker columns="{{ columns }}" show-toolbar bind:change="onChangePicker" bind:confirm="onConfirmPicker" bind:cancel="onCanclePicker" />
+    </van-popup>
+    <van-button color="#515151" type="primary" form-type="submit" size="large" bindtap="onsubmit">注册社团</van-button>
+  </van-cell-group>
+</scroll-view>
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

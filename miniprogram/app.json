@@ -7,7 +7,8 @@
     "pages/search/search",
     "pages/login/login",
     "pages/usermore/usermore",
-    "pages/phoneBind/phoneBind"
+    "pages/phoneBind/phoneBind",
+    "pages/association_register/association_register"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -8,7 +8,8 @@
     "pages/login/login",
     "pages/usermore/usermore",
     "pages/phoneBind/phoneBind",
-    "pages/association_register/association_register"
+    "pages/association_register/association_register",
+    "pages/association_joined/association_joined"
   ],
   "window": {
     "backgroundTextStyle": "light",

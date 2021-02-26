@@ -1,11 +1,14 @@
 <!--miniprogram/pages/association_joined/association_joined.wxml-->
-<view wx:for="{{array}}"  wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex" >
-  <van-card tag="{{item.clubType}}" desc="{{item.clubDescribe}}" title="{{item.clubName}}" thumb="{{item.clubLogo}}" >
+<view wx:if="{{array.length > 0}}" wx:for="{{array}}"  wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex" >
+  <van-card tag="{{item.type}}" desc="{{item.desc}}" title="{{item.name}}" thumb="{{item.logo}}" >
     <view slot="footer">
-      <van-button size="small" class="left_button" bind:click="view_club"  data-bindex='{{bindex}}' data-club-id="{{item.clubId}}">查看</van-button>
-      <van-button size="small"  bind:click="exit_club"  data-bindex='{{bindex}}' data-club-id="{{item.clubId}}">退出社团</van-button>
+      <van-button plain type="primary" size="small" class="left_button" bind:click="view_club"  data-bindex='{{bindex}}' data-club-id="{{item.id}}">查看</van-button>
+      <van-button plain type="danger" size="small"  bind:click="exit_club"  data-bindex='{{bindex}}' data-club-id="{{item.id}}">退出社团</van-button>
     </view>
   </van-card>
+</view>
+<view wx:if="{{array.length === 0}}" class="no-content">
+  <text>您还未加入任何社团，快去完善信息加入心仪的社团吧！</text>
 </view>
 
 <van-dialog id="van-dialog"/><van-toast id="van-toast" />

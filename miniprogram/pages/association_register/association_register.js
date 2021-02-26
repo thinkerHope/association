@@ -75,12 +75,12 @@ Page({
       })
     } else {
       console.log('注册中...')
-      wx.showToast({
-        title: '注册中',
-        icon: 'loading',
-        duration: 100000,
-        mask: true
-      })
+      // wx.showToast({
+      //   title: '注册中',
+      //   icon: 'loading',
+      //   duration: 10000,
+      //   mask: true
+      // })
       const { userid } = this.data.userInfo
       const url = `${app.globalData.server_prefix}/api/association/create`;
       const filePath = avatarFile.path
@@ -99,14 +99,11 @@ Page({
         formData
       )
       .then(res => {
-        wx.hideLoading()
-        Dialog.alert({
-          message: '创建成功'
-        }).then(() => {
-          wx.navigateTo({
-            url: '/pages/association_joined/association_joined',
-          })
+        Toast.success('创建成功')
+        wx.navigateTo({
+          url: 'pages/association_joined/association_joined',
         })
+        // wx.hideLoading();
       })
       .catch(err => {
         wx.hideLoading()
@@ -117,7 +114,6 @@ Page({
 
   /** 分割====================================================================线 */
   onConfirmPicker(event) {
-    console.log(event)
     this.setData({
       association_academy: event.detail.value,
       is_open_pop: false
@@ -125,7 +121,6 @@ Page({
   },
   onCanclePicker() {
     this.setData({
-      association_academy: '',
       is_open_pop: false
     });
   },
@@ -155,12 +150,6 @@ Page({
   },
   onClose_type_Pop() {
     this.setData({ is_open_type_pop: false });
-  },
-
-
-  onChangePicker(event) {
-    console.log(event)
-    const { picker, value, index } = event.detail;
   },
 
   // 输入值绑定

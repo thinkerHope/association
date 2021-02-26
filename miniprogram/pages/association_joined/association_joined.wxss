@@ -1,4 +1,11 @@
 /* miniprogram/pages/association_joined/association_joined.wxss */
-.left_button{
+.left_button {
   margin-right: 30rpx;
+}
+
+.no-content {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  padding-top: 500rpx;
 }

@@ -45,6 +45,12 @@ Page({
       url: '/pages/usermore/usermore',
     })
   },
+  jumpAssociationJoined() {
+    this.checkStatus()
+    wx.navigateTo({
+      url: '/pages/association_joined/association_joined',
+    })
+  },
   checkStatus() {
     if (this.condition) {
       wx.navigateTo({

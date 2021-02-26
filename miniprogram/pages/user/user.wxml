@@ -41,7 +41,7 @@
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
-      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+      <view class="content" bindtap="jumpAssociationJoined">
         <text class="cuIcon-activityfill text-red"></text>
         <text class="text-grey">加入的社团</text>
       </view>

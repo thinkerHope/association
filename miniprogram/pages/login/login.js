@@ -14,25 +14,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    wx.onNetworkStatusChange(this.networkChangeCb)
-  },
-  onUnload: function() {
-    wx.offNetworkStatusChange(this.networkChangeCb)
-  },
-
-  networkChangeCb: function(res) {
-    console.log(res)
-    this.setData({
-      networkType: res.networkType
-    })
-  },
 
   getUserInfo: function(e) {
-    if (this.data.networkType === 'none') {
-      console.log('当前无网络')
-      Toast.fail('当前无网络')
-    }
     const that = this;
     // 获取用户信息
     wx.getSetting({

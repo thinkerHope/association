@@ -103,9 +103,18 @@ Page({
       )
       .then(async res => {
         const { retcode } = res
-        console.log('$request updateUserInfo',res.data.data.userInfo)
+        if (retcode === 3004) {
+          Toast.fail('登录过期，请重新登录')
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          }, 1000)
+          return;
+        }
         if (retcode === 0) {
           let uploadRes;
+
           if (this.data.avatarFile) {
             try {
               uploadRes = await app.authApi.$upload(
@@ -121,7 +130,7 @@ Page({
           }
           // 更新信息到缓存
           const oldUserInfo = wx.getStorageSync('userInfo')
-          const newUserInfo = { ...oldUserInfo, ...res.data.data.userInfo }
+          const newUserInfo = { ...oldUserInfo, ...res.data.userInfo }
           if (uploadRes) {
             newUserInfo.avatarUrl = `${app.globalData.server_prefix}${uploadRes}`
           }
@@ -139,7 +148,7 @@ Page({
       })
       .catch(err => {
         console.log('err', JSON.stringify(err))
-        Toast.fail('请求失败');
+        Toast.fail('请求出错');
       })
     }
   },

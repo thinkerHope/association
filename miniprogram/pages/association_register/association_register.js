@@ -99,7 +99,14 @@ Page({
         formData
       )
       .then(res => {
-        console.log('register association info res', res)
+        wx.hideLoading()
+        Dialog.alert({
+          message: '创建成功'
+        }).then(() => {
+          wx.navigateTo({
+            url: '/pages/association_joined/association_joined',
+          })
+        })
       })
       .catch(err => {
         wx.hideLoading()
@@ -132,7 +139,6 @@ Page({
 
   // 控制选择社团类型确认与取消
   onConfirmPicker_type(event) {
-    console.log(event)
     this.setData({
       association_type: event.detail.value,
       is_open_type_pop: false

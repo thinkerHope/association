@@ -92,7 +92,7 @@ const $request = (url, data, method = 'GET', config = {}) => {
             }),
             ...config,
             success: (ret) => {
-              resolve({ retcode: 0, data: ret.data })
+              resolve(ret.data)
             },
           })
         } else {
@@ -112,6 +112,7 @@ const $upload = (url, filePath, formData) => {
       filePath: filePath,
       name: 'file',
       formData: formData,
+      header: { 'content-type': 'application/json;charset=UTF-8' },
       success(res) {
         if (res.data) {
           const { retcode, data } = JSON.parse(res.data)

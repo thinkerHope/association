@@ -1,2 +1,11 @@
 <!--miniprogram/pages/association_joined/association_joined.wxml-->
+<view wx:for="{{array}}"  wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex" >
+  <van-card tag="{{item.clubType}}" desc="{{item.clubDescribe}}" title="{{item.clubName}}" thumb="{{item.clubLogo}}" >
+    <view slot="footer">
+      <van-button size="small" class="left_button" bind:click="view_club"  data-bindex='{{bindex}}' data-club-id="{{item.clubId}}">查看</van-button>
+      <van-button size="small"  bind:click="exit_club"  data-bindex='{{bindex}}' data-club-id="{{item.clubId}}">退出社团</van-button>
+    </view>
+  </van-card>
+</view>
 
+<van-dialog id="van-dialog"/><van-toast id="van-toast" />

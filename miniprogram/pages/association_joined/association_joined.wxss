@@ -1,1 +1,4 @@
 /* miniprogram/pages/association_joined/association_joined.wxss */
+.left_button{
+  margin-right: 30rpx;
+}

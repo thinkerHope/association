@@ -9,7 +9,8 @@
     "pages/usermore/usermore",
     "pages/phoneBind/phoneBind",
     "pages/association_register/association_register",
-    "pages/association_joined/association_joined"
+    "pages/association_joined/association_joined",
+    "pages/association_manage/association_manage"
   ],
   "window": {
     "backgroundTextStyle": "light",

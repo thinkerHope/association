@@ -61,7 +61,7 @@
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/log/log" hover-class="none">
         <text class="cuIcon-formfill text-green"></text>
-        <text class="text-grey">管理社团</text>
+        <text class="text-grey">消息通知</text>
       </navigator>
     </view>
     <view class="cu-item arrow">

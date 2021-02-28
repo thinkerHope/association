@@ -10,6 +10,7 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log('onLoad')
     const userInfo = wx.getStorageSync('userInfo')
     this.setData({ userInfo })
   },

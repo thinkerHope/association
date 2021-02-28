@@ -1,0 +1,66 @@
+<!--miniprogram/pages/association_manage/association_manage.wxml-->
+<view class='containe'>
+  <image class='about-banner' src="{{club_logo}}"></image>
+  <!-- <van-button round type="info" color="#515151" size="small" bind:click="change_logo">更换logo</van-button> -->
+  
+  <van-tabs animated bind:change="onChange" color="#515151" swipeable>
+    <van-tab title="简介">
+      <van-field value="{{ club_name }}" label="社团名称" disabled/>
+      <van-field value="{{ club_type }}" label="社团类型" disabled/>
+      <van-field value="{{ club_institute }}" label="所属学院" disabled/>
+      <van-field value="{{ club_QQ }}" label="官方QQ" bind:input="input_club_QQ" />
+      <van-field value="{{ club_describe }}" label="社团描述：" bind:input="input_club_describe" type="textarea" autosize />
+      <van-button color="#515151" type="primary" size="large" bind:click="change_club_data">确认修改
+      </van-button>
+    </van-tab>
+
+    <van-tab title="成员">
+      <van-panel title="活动成员" desc="可查看所有加入社团的成员信息(excel格式)" status="社团总人数:{{club_count}}" use-footer-slot>
+        <view slot="footer">
+          <van-button size="small" bind:click="downloadClubInfo"  color="#515151" plain hairline type="primary">查看信息</van-button>
+        </view>
+      </van-panel>
+      <view wx:for="{{user_array}}" wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex">
+        <van-card desc="{{item.userClass}}" title="{{item.userName}}">
+          <view slot="price-top" class="userclass">
+            <van-tag size="medium" color="#fc7e2f" plain id="intitute">{{item.userInstitute}}</van-tag>
+            <van-tag size="medium" color="#7232dd" plain>用户联系方式: {{item.userPhone}}</van-tag>
+          </view>
+          <view slot="footer">
+            <van-button size="small" bind:click="exit_club" data-bindex='{{bindex}}' data-user-id="{{item.userId}}">移除社团</van-button>
+          </view>
+          <view slot="thumb">
+            <van-image use-error-slot use-loading-slot round width="150rpx" lazy-load height="150rpx" src="{{item.userAvatar}}">
+              <van-loading slot="loading" type="spinner" size="20" vertical />
+              <text slot="error">加载失败</text>
+            </van-image>
+          </view>
+        </van-card>
+        <van-divider hairline />
+      </view>
+    </van-tab>
+
+    <van-tab title="活动">
+      <!-- <view class="text">向左滑动可删除活动</view> -->
+      <van-panel title="向左滑动可删除活动" desc="可查看每个活动所有参与者的信息(excel格式)" ></van-panel>
+      <view wx:for="{{act_array}}" wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex">
+        <van-swipe-cell data-bindex='{{bindex}}' data-act-id="{{item.activityId}}" right-width="{{ 65 }}" async-close bind:close="onClose1">
+          <van-cell-group>
+            <van-card centered lazy-load currency="截止时间: " price-class="price-class" price="{{item.activityEndtime}}" desc="{{item.activityDescribe}}" title="{{item.activityName}}" class="goods-card" thumb="{{item.activityCover}}">
+              <view slot="price-top" >
+                <van-button class="towButton" bind:click="getnew" color="#515151" data-bindex='{{bindex}}' data-act-id="{{item.activityId}}" plain hairline type="primary" size="mini">详情</van-button>
+                 <van-button bind:click="downloadActInfo" color="#515151" data-bindex='{{bindex}}' data-act-id="{{item.activityId}}" plain hairline type="primary" size="mini">查看成员</van-button>
+              </view>
+            </van-card>
+          </van-cell-group>
+          <view slot="right" id="right" class="van-swipe-cell__right">移除</view>
+        </van-swipe-cell>
+      </view>
+    </van-tab>
+  </van-tabs>
+  <view bindtap="makeAct">
+    <image src="/pages/icons/zengjia.png" class="round-click"></image>
+  </view>
+</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

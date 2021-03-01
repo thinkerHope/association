@@ -101,9 +101,14 @@ Page({
       .then(res => {
         Toast.success('创建成功')
         wx.navigateTo({
-          url: 'pages/association_joined/association_joined',
+          url: '/pages/association_joined/association_joined',
         })
-        // wx.hideLoading();
+        const oldAssociations = wx.getStorageSync('associations')
+        wx.setStorageSync('associations', [
+          ...oldAssociations,
+          res
+        ])
+        wx.hideLoading();
       })
       .catch(err => {
         wx.hideLoading()

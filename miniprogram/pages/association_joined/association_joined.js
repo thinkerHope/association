@@ -5,31 +5,36 @@ const app = getApp()
 Page({
   data: {
     userInfo: null,
-
     array: [],
   },
 
   onLoad: function (options) {
-    console.log('onLoad')
     const userInfo = wx.getStorageSync('userInfo')
+    const associations = wx.getStorageSync('associations')
     this.setData({ userInfo })
+    if (associations) {
+      this.setData({ array: associations })
+      return;
+    }
+    app.fetchAssociations(
+      userInfo.userid,
+      (data) => {
+        console.log('data',data)
+        this.setData({ array: data.associations })
+        wx.setStorageSync('associations', [...data.associations])
+      }
+    )
   },
 
   onShow: function() {
-    const { userid } = this.data.userInfo
-    app.authApi.$request(
-      app.globalData.server_prefix + '/api/association/get',
-      { userid },
-      'POST',
-    ).then(res => {
-      const { retcode, data } = res
-      if (retcode !== 0) {
-        Toast.fail('发生错误')
-        return
-      }
-      this.setData({
-        array: data.associations
-      })
+    
+  },
+
+  view_club(e) {
+    const associationName = e.currentTarget.dataset.associationName
+    
+    wx.navigateTo({
+      url: `/pages/association_manage/association_manage?association_name=${associationName}`,
     })
   }
 })

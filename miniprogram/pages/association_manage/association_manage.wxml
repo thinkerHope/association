@@ -59,7 +59,7 @@
     </van-tab>
   </van-tabs>
   <view bindtap="makeAct">
-    <image src="/pages/icons/zengjia.png" class="round-click"></image>
+    <!-- <image src="/pages/icons/zengjia.png" class="round-click"></image> -->
   </view>
 </view>
 <van-dialog id="van-dialog" />

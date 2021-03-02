@@ -85,7 +85,7 @@ Page({
         // on close
       })
     } else {
-      const userInfo_ = wx.getStorageSync('userInfo');
+      const userInfo_ = app.globalData.userInfo;
       const newUser = {
         userid: userInfo_.userid,
         username,

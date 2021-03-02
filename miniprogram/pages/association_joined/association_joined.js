@@ -9,21 +9,22 @@ Page({
   },
 
   onLoad: function (options) {
-    const userInfo = wx.getStorageSync('userInfo')
+    const userid = app.globalData.userInfo.userid
     const associations = wx.getStorageSync('associations')
-    this.setData({ userInfo })
     if (associations) {
       this.setData({ array: associations })
       return;
     }
-    app.fetchAssociations(
-      userInfo.userid,
-      (data) => {
-        console.log('data',data)
-        this.setData({ array: data.associations })
-        wx.setStorageSync('associations', [...data.associations])
-      }
-    )
+    if (userid) {
+      app.fetchAssociations(
+        userid,
+        (data) => {
+          console.log('data',data)
+          this.setData({ array: data.associations })
+          wx.setStorageSync('associations', [...data.associations])
+        }
+      )
+    }
   },
 
   onShow: function() {

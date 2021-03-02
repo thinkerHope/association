@@ -21,7 +21,7 @@ Page({
         const userInfo = app.globalData.userInfo
         this.setData({
           condition: false,
-          userInfo: userInfo
+          userInfo
         })
       } else {
         this.setData({

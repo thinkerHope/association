@@ -19,7 +19,6 @@ Page({
   },
 
   onConfirmPicker(event){
-    console.log(event)
     this.setData({ 
       academy: event.detail.value,
       is_open_pop: false
@@ -102,7 +101,7 @@ Page({
         { header: { 'content-type': 'application/json;charset=UTF-8' }, }
       )
       .then(async res => {
-        const { retcode } = res
+        const { retcode, message } = res
         if (retcode === 3004) {
           Toast.fail('登录过期，请重新登录')
           setTimeout(() => {
@@ -143,7 +142,7 @@ Page({
           })
         }
         else {
-          Toast.fail('请求失败');
+          Toast.fail(`请求失败: ${message}`);
         }
       })
       .catch(err => {

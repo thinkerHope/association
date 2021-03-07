@@ -17,7 +17,7 @@ const formatNumber = function (n) {
 };
 
 const $login = () => {
-  const url = 'http://localhost:3001/api/login';
+  const url = 'http://127.0.0.1:3001/api/login';
   return new Promise((resolve, reject) => {
     wx.login({
       success: function (ret) {
@@ -124,7 +124,7 @@ const $upload = (url, filePath, formData) => {
         }
       },
       fail(err) {
-        reject('上传失败')
+        reject(err)
       }
     });
   })

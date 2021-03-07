@@ -52,11 +52,11 @@
         <text class="text-grey">编辑资料</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/association_register/association_register" hover-class="none">
+    <view class="cu-item arrow" bindtap="jumpRegisAsso">
+      <view class="content">
         <text class="cuIcon-fork text-yellow"></text>
         <text class="text-grey">注册社团</text>
-      </navigator>
+      </view>
     </view>
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/log/log" hover-class="none">
@@ -73,3 +73,5 @@
   </view>
   <view class="cu-tabbar-height"></view>
 </scroll-view>
+
+<van-toast id="van-toast" />

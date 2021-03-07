@@ -1,5 +1,6 @@
 // miniprogram/pages/user/user.js
 const app = getApp();
+import Toast from '../../dist/toast/toast';
 Page({
   /**
    * 页面的初始数据
@@ -40,23 +41,38 @@ Page({
   },
 
   jumpUserMore() {
-    this.checkStatus()
-    wx.navigateTo({
-      url: '/pages/usermore/usermore',
-    })
+    if (this.checkLoginStatus()) {
+      wx.navigateTo({
+        url: '/pages/usermore/usermore',
+      })
+    }
   },
   jumpAssociationJoined() {
-    this.checkStatus()
-    wx.navigateTo({
-      url: '/pages/association_joined/association_joined',
-    })
+    this.checkUserJump('/pages/association_joined/association_joined')
   },
-  checkStatus() {
-    if (this.condition) {
+  jumpRegisAsso() {
+    this.checkUserJump('/pages/association_register/association_register')
+  },
+  checkLoginStatus() {
+    if (this.data.condition) {
       wx.navigateTo({
         url: '/pages/login/login',
       });
-      return;
+    }
+    return !this.data.condition
+  },
+  checkInfoComplete() {
+    if (!this.data.userInfo || this.data.userInfo.isInfoComplete !== 0) {
+      Toast.fail('请先完善用户信息')
+      return false
+    }
+    return true
+  },
+  checkUserJump(url) {
+    if (this.checkLoginStatus() && 
+        this.checkInfoComplete()
+    ) {
+      wx.navigateTo({ url })
     }
   },
 

@@ -1,26 +1,36 @@
 <!--miniprogram/pages/association_manage/association_manage.wxml-->
 <view class='containe'>
-  <image class='about-banner' src="{{club_logo}}"></image>
+  <image class='about-banner' src="{{associationInfo.logo}}"></image>
   <!-- <van-button round type="info" color="#515151" size="small" bind:click="change_logo">更换logo</van-button> -->
-  
-  <van-tabs animated bind:change="onChange" color="#515151" swipeable>
-    <van-tab title="简介">
-      <van-field value="{{ club_name }}" label="社团名称" disabled/>
-      <van-field value="{{ club_type }}" label="社团类型" disabled/>
-      <van-field value="{{ club_institute }}" label="所属学院" disabled/>
-      <van-field value="{{ club_QQ }}" label="官方QQ" bind:input="input_club_QQ" />
-      <van-field value="{{ club_describe }}" label="社团描述：" bind:input="input_club_describe" type="textarea" autosize />
-      <van-button color="#515151" type="primary" size="large" bind:click="change_club_data">确认修改
-      </van-button>
+  <van-tabs animated color="#515151" swipeable bind:change="onTabChange" active="{{tab}}">
+    <van-tab title="简介" name="intruc">
+      <view class="cu-list menu sm-border">
+        <view
+          class="cu-item {{item === 'academy' || item === 'type' ? '' : 'arrow'}}" 
+          wx:for="{{keys}}" 
+          wx:key="idx" 
+          wx:for-item="item"
+          bindtap="{{item === 'academy' || item === 'type' ? '' : 'editAssoInfo'}}"
+          data-type="{{item === 'desc' ? 'text-area' : 'input'}}"
+          data-value="{{associationInfo[item]}}"
+          data-title="{{showName2Key[item]}}"
+        >
+          <view class="content">
+            <text class="text-black">{{showName2Key[item]}}</text>
+          </view>
+          <view class="action">
+            <text class="text-grey">{{associationInfo[item]}}</text>
+          </view>
+        </view>
+      </view>
     </van-tab>
-
-    <van-tab title="成员">
+    <van-tab title="成员" name="mem">
       <van-panel title="活动成员" desc="可查看所有加入社团的成员信息(excel格式)" status="社团总人数:{{club_count}}" use-footer-slot>
         <view slot="footer">
           <van-button size="small" bind:click="downloadClubInfo"  color="#515151" plain hairline type="primary">查看信息</van-button>
         </view>
       </van-panel>
-      <view wx:for="{{user_array}}" wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex">
+      <view wx:for="{{members}}" wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex">
         <van-card desc="{{item.userClass}}" title="{{item.userName}}">
           <view slot="price-top" class="userclass">
             <van-tag size="medium" color="#fc7e2f" plain id="intitute">{{item.userInstitute}}</van-tag>
@@ -39,8 +49,7 @@
         <van-divider hairline />
       </view>
     </van-tab>
-
-    <van-tab title="活动">
+    <van-tab title="活动" name="act">
       <!-- <view class="text">向左滑动可删除活动</view> -->
       <van-panel title="向左滑动可删除活动" desc="可查看每个活动所有参与者的信息(excel格式)" ></van-panel>
       <view wx:for="{{act_array}}" wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex">
@@ -58,9 +67,18 @@
       </view>
     </van-tab>
   </van-tabs>
-  <view bindtap="makeAct">
-    <!-- <image src="/pages/icons/zengjia.png" class="round-click"></image> -->
+  <view bindtap="addAct" wx:if="{{tab === 'act'}}">
+    <image src="../../assets/images/zengjia.png" class="round-click"></image>
   </view>
 </view>
 <van-dialog id="van-dialog" />
 <van-toast id="van-toast" />
+<van-popup
+  show="{{ showPopup }}"
+  round
+  position="bottom"
+  custom-style="height: 20%"
+  bind:close="onClose"
+>
+
+</van-popup>

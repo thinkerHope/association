@@ -7,6 +7,7 @@
     "van-button": "/dist/button/index",
     "van-action-sheet": "/dist/action-sheet/index",
     "van-dialog": "/dist/dialog/index",
-    "van-toast": "/dist/toast/index"
+    "van-toast": "/dist/toast/index",
+    "van-loading": "/dist/loading/index"
   }
 }

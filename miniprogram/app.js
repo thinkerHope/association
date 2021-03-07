@@ -3,28 +3,24 @@ import util from './utils/util';
 
 App({
 	globalData: {
-		server_prefix: 'http://localhost:3001',
+		server_prefix: 'http://127.0.0.1:3001',
 		userInfo: null,
+		my_associations: [],
 	},
 	onLaunch: function() {
-		console.log('onLaunch')
 		const logs = wx.getStorageSync('logs') || [];
 		logs.unshift(Date.now());
 		wx.setStorageSync('logs', logs);
 		const userInfo = wx.getStorageSync('userInfo');
-		if (userInfo) {
+		if (userInfo && userInfo.userid) {
 			this.globalData.userInfo = userInfo;
 			const userid = userInfo.userid
-			// 拉取社团
-			const associations = wx.getStorageSync('associations')
-			if (associations && associations.length) {
-				this.globalData.associations = associations
-			}
-			this.fetchAssociations(
+			// 拉取社团类型
+			
+			this.fetchJoinedAssociations(
 				userid,
 				(data) => {
-					this.globalData.associations = data.associations
-					wx.setStorageSync('associations', [...data.associations])
+					this.globalData.my_associations = data.associations
 				}
 			)
 		}
@@ -39,7 +35,7 @@ App({
 	setUserInfo: function(data) {
 		this.globalData.userInfo = { ...data }
 	},
-	fetchAssociations: function(userid, cb) {
+	fetchJoinedAssociations: function(userid, cb) {
 		this.authApi.$request(
 			this.globalData.server_prefix + '/api/association/get',
 			{ userid },

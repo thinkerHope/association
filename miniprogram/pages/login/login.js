@@ -36,27 +36,18 @@ Page({
               app.authApi.$login()
               .then(loginRes => {
                 // 登录成功之后如果用户已经完善了信息则直接返回
-                const { exists, skey } = loginRes
+                const { exists, skey, userid } = loginRes
                 if (loginRes) {
+                  let newuserInfo;
                   Toast.success('登录成功')
                   if (exists) {
-                    wx.setStorageSync('userInfo', {
-                      ...exists,
-                      skey,
-                    })
-                    app.setUserInfo({
-                      ...exists,
-                      skey,
-                    })
+                    newuserInfo = { ...exists, skey }
+                    wx.setStorageSync('userInfo', newuserInfo)
+                    app.setUserInfo(newuserInfo)
                   } else {
-                    wx.setStorageSync('userInfo', {
-                      ...res.userInfo,
-                      skey,
-                    })
-                    app.setUserInfo({
-                      ...res.userInfo,
-                      skey,
-                    })
+                    newuserInfo = { ...res.userInfo, skey, userid }
+                    wx.setStorageSync('userInfo', newuserInfo)
+                    app.setUserInfo(newuserInfo)
                   }
                   wx.navigateBack()
                 }

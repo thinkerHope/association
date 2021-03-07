@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-field": "/dist/field/index",
+    "van-nav-bar": "/dist/nav-bar/index",
+    "van-button": "/dist/button/index"
+  },
+  "navigationBarTitleText": ""
+}

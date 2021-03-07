@@ -1,1 +1,19 @@
 /* miniprogram/pages/association_manage/association_manage.wxss */
+
+.cu-list.menu > .cu-item {
+  padding-right: 90rpx;
+  padding-left: 50rpx;
+}
+
+.round-click{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 150rpx;
+  right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}

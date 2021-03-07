@@ -1,0 +1,24 @@
+<!--miniprogram/pages/edit/edit.wxml-->
+<view wx:if="{{type === 'input'}}">
+  <van-field
+    value="{{ value }}"
+    clearable
+    placeholder="请输入{{title}}"
+    border="{{ false }}"
+    bind:change="onChange"
+    use-button-slot
+  >
+    <van-button plain round slot="button" size="small" type="primary">保存</van-button>
+  </van-field>
+</view>
+
+<view wx:if="{{type === 'text-area'}}">
+  <van-field
+    value="{{ value }}"
+    type="textarea"
+    clearable
+    placeholder="请输入{{title}}"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+</view>

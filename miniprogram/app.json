@@ -10,7 +10,8 @@
     "pages/phoneBind/phoneBind",
     "pages/association_register/association_register",
     "pages/association_joined/association_joined",
-    "pages/association_manage/association_manage"
+    "pages/association_manage/association_manage",
+    "pages/edit/edit"
   ],
   "window": {
     "backgroundTextStyle": "light",

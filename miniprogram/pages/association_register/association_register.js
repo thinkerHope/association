@@ -25,13 +25,25 @@ Page({
 
     columns: ['管理学院', '经济学院', '计算机与通信工程学院', '控制工程学院', '外国语文化学院','数学与统计学院','资源与材料学院'],
     type_columns: ['公益类', '传统类', '音乐类', '舞蹈类', '文学类', '美术类', '科技类', '学术类', '语言类'],
+    type_map: {
+      '公益类': 'charity',
+      '体育类': 'sports',
+      '传统类': 'tradition',
+      '音乐类': 'music',
+      '舞蹈类': 'dance',
+      '文学类': 'literature',
+      '美术类': 'arts',
+      '科技类': 'technology',
+      '学术类': 'academic',
+      '语言类': 'language'
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const userInfo = app.getStorageSync('userInfo')
+    const userInfo = wx.getStorageSync('userInfo')
     this.setData({ userInfo })
   },
 
@@ -88,7 +100,7 @@ Page({
         userid,
         association_name, 
         association_desc, 
-        association_type, 
+        association_type: this.data.type_map[association_type], 
         association_academy, 
         association_qq,
       }
@@ -103,11 +115,6 @@ Page({
         wx.navigateTo({
           url: '/pages/association_joined/association_joined',
         })
-        const oldAssociations = wx.getStorageSync('associations')
-        wx.setStorageSync('associations', [
-          ...oldAssociations,
-          res
-        ])
         wx.hideLoading();
       })
       .catch(err => {

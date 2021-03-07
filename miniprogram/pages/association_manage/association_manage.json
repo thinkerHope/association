@@ -15,5 +15,6 @@
     "van-submit-bar": "/dist/submit-bar/index",
     "van-toast": "/dist/toast/index",
     "van-panel": "/dist/panel/index"
-  }
+  },
+  "navigationBarTitleText": "我的社团"
 }

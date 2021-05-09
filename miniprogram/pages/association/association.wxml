@@ -1,12 +1,26 @@
 <!--miniprogram/pages/association/association.wxml-->
-<van-tree-select 
-  main-active-class="main-active-class" 
-  content-active-class="content-active-class"
-  items="{{ items }}"
-  main-active-index="{{ mainActiveIndex }}"
-  active-id="{{ activeId }}"
-  bind:click-nav="onClickNav"
-  bind:click-item="onClickItem"
-  height="100%"
-/>
+<view>
+  <van-search
+    model:value="{{ value }}"
+    placeholder="搜索社团名称"
+    bind:search="onSearch"
+    bind:cancel="onCancel"
+    bind:clear="onClear"
+    bind:change="onChange"
+  />
+  <view class='border'/>
+  <!-- <van-card tag="体育类" desc="我的滑板鞋，时尚时尚最时尚。" title="轮滑协会" thumb="http://localhost:3001/uploads/association/20210307/c5a86cca210ee8801994e9ce9d53914d.jpg" >
+  </van-card> -->
+  <van-tree-select 
+    main-active-class="main-active-class" 
+    content-active-class="content-active-class"
+    items="{{ items }}"
+    main-active-index="{{ mainActiveIndex }}"
+    active-id="{{ activeId }}"
+    bind:click-nav="onClickNav"
+    bind:click-item="onClickItem"
+    height="100%"
+  />
+</view>
+
 <van-toast id="van-toast" />

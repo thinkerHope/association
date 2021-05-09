@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "活动详情",
+  "usingComponents": {
+    "van-image": "../../dist/image/index",
+    "van-tab": "/dist/tab/index",
+    "van-tabs": "/dist/tabs/index",
+    "van-cell": "/dist/cell/index",
+    "van-cell-group": "/dist/cell-group/index",
+    "van-calendar": "/dist/calendar/index",
+    "van-icon": "/dist/icon/index",
+    "van-submit-bar": "/dist/submit-bar/index",
+    "van-tag": "/dist/tag/index",
+    "van-count-down": "/dist/count-down/index",
+    "van-toast": "/dist/toast/index"
+  }
+}

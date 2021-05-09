@@ -28,14 +28,14 @@ Page({
             const { showName, type, list = [] } = item;
             return {
               text: showName,
-              children: list.length ? list.map(item => {
-                const { association_id: id, name } = item;
-                return {
-                  ...item,
-                  text: name,
-                  id,
-                }
-              }) : []
+              children: [
+                { text: '羽毛球协会', id: 1 },
+                { text: '轮滑协会', id: 2 },
+                { text: '乒乓球协会', id: 3 },
+                { text: '篮球协会', id: 4 },
+                { text: '斯诺克协会', id: 5 },
+                { text: '网球协会', id: 6 },
+              ]
             }
           })
           this.setData({ items: types })

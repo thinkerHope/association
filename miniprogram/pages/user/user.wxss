@@ -4,7 +4,6 @@
   background-size: cover;
   height: 550rpx;
   display: flex;
-  justify-content: center;
   padding-top: 40rpx;
   overflow: hidden;
   position: relative;
@@ -44,3 +43,11 @@ map,.mapBox{
   width: 750rpx;
   height: 300rpx;
 }
+
+.user-message {
+  width: 100vw;
+  text-align: right;
+  padding: 0 46rpx;
+  margin-bottom: 52rpx;
+}
+

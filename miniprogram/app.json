@@ -11,7 +11,10 @@
     "pages/association_register/association_register",
     "pages/association_joined/association_joined",
     "pages/association_manage/association_manage",
-    "pages/edit/edit"
+    "pages/edit/edit",
+    "pages/login2/login2",
+    "pages/association_home/association_home",
+    "pages/act_detail/act_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

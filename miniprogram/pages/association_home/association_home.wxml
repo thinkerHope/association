@@ -1,0 +1,44 @@
+<van-card centered lazy-load title="轮滑协会" desc="我的滑板鞋，时尚时尚最时尚。" thumb="http://localhost:3001/uploads/association/20210307/c5a86cca210ee8801994e9ce9d53914d.jpg" thumb-class="thumb-class">
+  <view slot="footer">
+    <van-button type="info" size="mini" bind:click="joinClub" >+加入</van-button>
+  </view>
+  <view slot="price-top">
+    <van-button disabled="false" color="#515151" size="mini">体育类</van-button>
+  </view>
+</van-card>
+
+
+<van-tabs animated  color="#515151">
+
+  <van-tab title="社团活动">
+    <!-- <van-cell-group>
+      <van-card centered lazy-load link-type="redirectTo" currency="截止时间: " price-class="price-class" price="2020-3-28" desc="每年一届的LOL电子竞技大赛将在6月1日举行" title="SK电子竞技LOL大赛" class="goods-card" thumb="http://39.96.86.4/wukong.jpg" thumb-link="../detailAct/detailAct"
+      />
+    </van-cell-group> -->
+    <view wx:for="{{act_array}}" wx:for-item="item" data-index="{{index}}" wx:key='index' wx:for-index="bindex">
+      <van-card centered lazy-load currency="截止时间: " price-class="price-class" price="{{item.activityEndtime}}" desc="{{item.activityDescribe}}" title="{{item.activityName}}" class="goods-card" thumb="{{item.activityCover}}">
+        <view slot="price-top">
+          <van-button bind:click="getnew" color="#515151" data-bindex='{{bindex}}' data-act-id="{{item.activityId}}" plain hairline type="primary" size="mini">查看</van-button>
+        </view>
+      </van-card>
+    </view> 
+  </van-tab>
+
+  <van-tab title="简介">
+    <van-cell title="官方QQ群号" size="large" label="12413523413" />
+    <van-cell title="社团简介" size="large" label="一个热爱滑轮的社团" />
+    <van-cell title="社团历史" size="large" label="建立时间：2021-07" />
+    <van-cell title="社团总人数" size="large" label="人数：2" />
+  </van-tab>
+
+  <!-- <van-tab title="社团相册">
+
+    <view wx:for="{{picture_list}}" wx:key="key" class="pictures">
+      <van-image width="100" height="100" fit="contain" src="{{item.picture}}" />
+    </view>
+
+  </van-tab> -->
+
+</van-tabs>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

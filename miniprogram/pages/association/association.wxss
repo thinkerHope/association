@@ -9,3 +9,8 @@
 .high{
   height: 100%;
 }
+.border {
+  margin-top: 10rpx;
+  border-top: 5px solid #ddd;
+  margin-bottom: 0rpx;
+ }

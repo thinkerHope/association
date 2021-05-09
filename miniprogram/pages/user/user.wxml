@@ -1,6 +1,9 @@
 <!--miniprogram/pages/user/user.wxml-->
 <scroll-view scroll-y class="scrollPage">
   <view class="UCenter-bg">
+    <view class="user-message">
+      <van-icon name="chat-o" dot size="1.5rem"/>
+    </view>
     <view 
       wx:if="{{!condition}}"
       class="cu-avatar xl round margin-left" 
